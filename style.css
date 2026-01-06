@@ -670,6 +670,16 @@ input:focus {
     line-height: 1.6;
 }
 
+#help-support a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#help-support a:hover {
+    text-decoration: underline;
+}
+
 .help-list {
     list-style: none;
     padding: 0;
