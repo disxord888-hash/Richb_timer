@@ -814,8 +814,25 @@ const App = {
         }
 
         this.updateLoop();
-        // Backup loop for background execution (approx 30Hz)
-        setInterval(() => this.updateLoop(), 30);
+
+        // Use Web Worker for background timing (prevents throttling)
+        if (window.Worker) {
+            this.timerWorker = new Worker('worker.js');
+            this.timerWorker.onmessage = () => {
+                this.updateLoop();
+            };
+        } else {
+            // Fallback
+            setInterval(() => this.updateLoop(), 50);
+        }
+
+        // Prevent accidental closing if timer is running
+        window.addEventListener('beforeunload', (e) => {
+            if (this.activeTimers.some(t => t.running) || this.activeAlarms.length > 0) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
     },
 
     // Helper: linkify text (find URLs and convert to <a>)

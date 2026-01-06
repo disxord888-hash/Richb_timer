@@ -4,6 +4,7 @@ const ASSETS = [
     './index.html',
     './style.css',
     './script.js',
+    './worker.js',
     './icon.png',
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap'
 ];
