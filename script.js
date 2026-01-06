@@ -814,8 +814,8 @@ const App = {
         }
 
         this.updateLoop();
-        // Backup loop for background execution (approx 1Hz)
-        setInterval(() => this.updateLoop(), 1000);
+        // Backup loop for background execution (approx 30Hz)
+        setInterval(() => this.updateLoop(), 30);
     },
 
     // Helper: linkify text (find URLs and convert to <a>)
