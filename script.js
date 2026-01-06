@@ -38,6 +38,229 @@ const DEFAULT_COLOR_PRESETS = [
     { name: 'Rose', rgb: { btn: { r: 8, g: 3, b: 4 }, bg: { r: 3, g: 1, b: 1 }, main: { r: 8, g: 5, b: 6 }, text: { r: 8, g: 8, b: 8 }, dim: { r: 5, g: 2, b: 2 }, btntxt: { r: 8, g: 8, b: 8 } } }
 ];
 
+const TRANSLATIONS = {
+    ja: {
+        lang_toggle: "言語切替",
+        mode_normal: "通常モード",
+        mode_view_only: "表示のみ",
+        quick_input: "クイック入力",
+        converter: "変換",
+        theme: "テーマ",
+        backup: "バックアップ/復元",
+        help: "ヘルプ",
+        base_point: "起点 (0.0L)",
+        save_btn: "💾 保存",
+        save_current: "現在の設定を保存",
+        unit_yr: "年",
+        unit_mo: "月",
+        unit_dy: "日",
+        unit_hr: "時",
+        unit_mn: "分",
+        unit_sc: "秒",
+        unit_s: "秒",
+        reset_to_now: "↺ 現在時刻にリセット",
+        alarm_title: "アラーム (指定時刻)",
+        alarm_placeholder: "例: 500L, 10o, 1h 30m",
+        set_alarm_btn: "🔔 アラーム設定",
+        quick_input_label: "クイック入力",
+        timer_title: "タイマー (カウントダウン)",
+        timer_placeholder: "例: 10m, 500L",
+        start_timer_btn: "▶ タイマー開始",
+        reset_timer_btn: "🔄 タイマーリセット",
+        timer_presets: "タイマー履歴/プリセット",
+        time_is_up: "時間です！",
+        stop_alarm_btn: "アラーム停止",
+        help_title: "Richb 単位",
+        tab_units: "単位一覧",
+        tab_calendar: "暦の仕組み",
+        converter_title: "単位変換",
+        quick_input_title: "クイック入力",
+        quick_input_desc: "タップして記号をコピー",
+        presets_label: "プリセット:",
+        export_btn: "📤 エクスポート",
+        import_btn: "📥 復元",
+        confirm_ok: "よろしいですか？",
+        confirm_reset_now: "起点時刻を現在にリセットしますか？",
+        confirm_delete: "このプリセットを削除しますか？",
+        confirm_restore: "すべての設定が上書きされ、アプリが再読み込みされます。続行しますか？ ⚠️",
+        restore_success: "設定が復元されました！再読み込みします... 🚀",
+        timer_presets_prompt: "タイマーのラベルを入力してください (例: 仕事、休憩):",
+        alert_invalid_format: "入力形式が正しくありません。 (例: 500L, 10o, 1Yr, 5m, 1h, 1d など)",
+        elapsed_label: "経過時間: ",
+        copied_alert: "コピーしました: ",
+        theme_title: "テーマ選択",
+        theme_default: "標準",
+        theme_purple: "パープル",
+        theme_orange: "オレンジ",
+        theme_green: "グリーン",
+        theme_mono: "モノクロ",
+        custom_rgb_title: "カスタムRGB (0-8)",
+        label_btn_color: "ボタン:",
+        label_bg_color: "背景:",
+        label_main_color: "メイン (アクセント):",
+        label_text_color: "テキスト色:",
+        label_dim_color: "暗いテキスト/ラベル:",
+        label_btntxt_color: "ボタン内文字:",
+        btn_apply_custom: "✅ カスタム設定を適用",
+        backup_title: "💾 バックアップと復元",
+        backup_desc: "設定をテキスト形式で書き出したり、貼り付けて復元したりできます。",
+        backup_placeholder: "ここに設定のJSONを貼り付けてください...",
+        prompt_preset_name: "プリセットの名前を入力してください:",
+        prompt_timer_label: "タイマーのラベルを入力してください (例: 仕事、休憩):",
+        prompt_base_label: "この起点のラベルを入力してください:",
+        alert_config_custom: "最初にカスタムテーマを設定してください！",
+        alert_enter_timer: "最初にタイマー値を入力してください (例: 500L)！",
+        alert_exported: "設定を書き出し、クリップボードにコピーしました！ 📄✅",
+        alert_exported_no_copy: "設定を書き出しました！枠内のテキストをコピーしてください。 📄",
+        alert_import_empty: "設定を復元するにはバックアップデータを貼り付けてください！ 📥",
+        confirm_apply_theme: "テーマ \"{name}\" を適用しますか？",
+        confirm_delete_color: "このカラープリセットを削除しますか？",
+        confirm_delete_timer: "このタイマーセットを削除しますか？",
+        unit_h_real: "時間",
+        unit_d_real: "日",
+        tab_notice: "お知らせ",
+        help_update_desc: "更新は１日に３～４回もしているので、１日に１回は、サイトのデータを消してください。",
+        help_desc: "100BPMの鼓動(1.2秒/拍、補正値1.245秒)に基づいたリズム感のある暦体系です。",
+        help_p_desc: "サブビート (1/12 L)",
+        help_l_desc: "基本拍 (鼓動)",
+        help_o_desc: "50 L (一瞬 / モーメント)",
+        help_i_desc: "50 o (一区切り / セッション)",
+        help_u_desc: "30 Ī (一周期 / 日)",
+        help_e_desc: "6 U (一週間)",
+        help_y_desc: "285 U (一年)",
+        preset_navy: "ネイビー",
+        preset_dark_red: "ダークレッド",
+        preset_digital_style: "デジタルスタイル",
+        preset_monochrome: "モノクロ",
+        preset_midnight: "ミッドナイト",
+        preset_forest: "フォレスト",
+        preset_sunset: "サンセット",
+        preset_lavender: "ラベンダー",
+        preset_ocean: "オーシャン",
+        preset_gold: "ゴールド",
+        preset_sakura: "サクラ",
+        preset_sky: "スカイ",
+        preset_mint: "ミント",
+        preset_earth: "アース",
+        preset_dusk: "ダスク",
+        preset_neon: "ネオン",
+        preset_berry: "ベリー",
+        preset_sand: "サンド",
+        preset_coal: "コール",
+        preset_rose: "ローズ"
+    },
+    en: {
+        lang_toggle: "Switch Language",
+        mode_normal: "Normal Mode",
+        mode_view_only: "View Only",
+        quick_input: "Quick Input",
+        converter: "Converter",
+        theme: "Theme",
+        backup: "Backup/Restore",
+        help: "Help",
+        base_point: "Base Point (0.0L)",
+        save_btn: "💾 SAVE",
+        save_current: "Save Current",
+        unit_yr: "Year",
+        unit_mo: "Mo",
+        unit_dy: "Day",
+        unit_hr: "Hr",
+        unit_mn: "Min",
+        unit_sc: "Sec",
+        unit_s: "s",
+        reset_to_now: "↺ RESET TO NOW",
+        alarm_title: "Alarm (Time)",
+        alarm_placeholder: "e.g. 500L, 10o, 1h 30m",
+        set_alarm_btn: "🔔 Set Alarm",
+        quick_input_label: "QUICK INPUT",
+        timer_title: "Timer (Countdown)",
+        timer_placeholder: "e.g. 10m, 500L",
+        start_timer_btn: "▶ Start Timer",
+        reset_timer_btn: "🔄 RESET TIMER",
+        timer_presets: "Timer Presets",
+        time_is_up: "TIME IS UP",
+        stop_alarm_btn: "STOP ALARM",
+        help_title: "Richb Units",
+        tab_units: "Units",
+        tab_calendar: "Calendar",
+        converter_title: "Unit Converter",
+        quick_input_title: "Quick Input",
+        quick_input_desc: "Tap to copy symbol.",
+        presets_label: "Presets:",
+        export_btn: "📤 EXPORT",
+        import_btn: "📥 RESTORE",
+        confirm_ok: "Is this okay?",
+        confirm_reset_now: "Reset base time to NOW?",
+        confirm_delete: "Delete this preset?",
+        confirm_restore: "This will OVERWRITE all current settings and reload the app. Continue? ⚠️",
+        restore_success: "Settings restored successfully! Reloading... 🚀",
+        timer_presets_prompt: "Enter timer label (e.g. \"Work\", \"Rest\"):",
+        alert_invalid_format: "Invalid format. Use 500L, 10o, 1Yr, 5m, 1h, 1d etc.",
+        elapsed_label: "Elapsed: ",
+        copied_alert: "Copied: ",
+        theme_title: "Select Theme",
+        theme_default: "Default",
+        theme_purple: "Purple",
+        theme_orange: "Orange",
+        theme_green: "Green",
+        theme_mono: "Mono",
+        custom_rgb_title: "Custom RGB (0-8)",
+        label_btn_color: "Button:",
+        label_bg_color: "Background:",
+        label_main_color: "Main (Acnt):",
+        label_text_color: "Text Color:",
+        label_dim_color: "Dim/Label:",
+        label_btntxt_color: "Btn Text:",
+        btn_apply_custom: "✅ APPLY CUSTOM",
+        backup_title: "💾 Backup & Restore",
+        backup_desc: "Export your settings to a text string, or paste one here and click restore to apply.",
+        backup_placeholder: "Paste settings JSON here...",
+        prompt_preset_name: "Enter preset name:",
+        prompt_timer_label: "Enter timer label (e.g. \"Work\", \"Rest\"):",
+        prompt_base_label: "Enter preset label for this Base Point:",
+        alert_config_custom: "Configure a custom theme first!",
+        alert_enter_timer: "Enter a timer value first (e.g. 500L)!",
+        alert_exported: "Settings exported and copied to clipboard! 📄✅",
+        alert_exported_no_copy: "Settings exported! Please copy the text in the box. 📄",
+        alert_import_empty: "Please paste the backup data first! 📥",
+        confirm_apply_theme: "Apply theme \"{name}\"? ",
+        confirm_delete_color: "Delete this color preset?",
+        confirm_delete_timer: "Delete this timer preset?",
+        unit_h_real: "hr",
+        unit_d_real: "days",
+        tab_notice: "Notice",
+        help_update_desc: "The site is updated 3-4 times a day. Please clear your site data once a day to ensure you have the latest version.",
+        help_desc: "A rhythmic calendar system based on the 100BPM heartbeat (1.2 sec/beat, corrected to 1.245s).",
+        help_p_desc: "Sub-beat (1/12 L)",
+        help_l_desc: "Base Beat (Heartbeat)",
+        help_o_desc: "50 L (A \"Moment\")",
+        help_i_desc: "50 o (A \"Session\")",
+        help_u_desc: "30 Ī (A \"Cycle/Day\")",
+        help_e_desc: "6 U (A \"Week\")",
+        help_y_desc: "285 U (A \"Year\")",
+        preset_navy: "Navy",
+        preset_dark_red: "Dark red",
+        preset_digital_style: "digital style",
+        preset_monochrome: "monochrome",
+        preset_midnight: "Midnight",
+        preset_forest: "Forest",
+        preset_sunset: "Sunset",
+        preset_lavender: "Lavender",
+        preset_ocean: "Ocean",
+        preset_gold: "Gold",
+        preset_sakura: "Sakura",
+        preset_sky: "Sky",
+        preset_mint: "Mint",
+        preset_earth: "Earth",
+        preset_dusk: "Dusk",
+        preset_neon: "Neon",
+        preset_berry: "Berry",
+        preset_sand: "Sand",
+        preset_coal: "Coal",
+        preset_rose: "Rose"
+    }
+};
+
 // ----------------------------------------------------
 // Core Logic: RichbTime Class
 // ----------------------------------------------------
@@ -170,6 +393,7 @@ const App = {
     activeTimers: [], // {id, endTime, durationSec, triggered, running, label, remainingOnPause}
 
     currentTheme: 'default', // default, purple, orange, green, monopoly
+    language: 'ja',
 
     mode: 'normal', // normal, compact, view-only
 
@@ -183,6 +407,31 @@ const App = {
 
     // Elements
     el: {},
+
+    t(key) {
+        return (TRANSLATIONS[this.language] && TRANSLATIONS[this.language][key]) || key;
+    },
+
+    updateUI() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            el.innerHTML = this.t(key);
+        });
+        document.querySelectorAll('[data-i18n-title]').forEach(el => {
+            const key = el.dataset.i18nTitle;
+            el.title = this.t(key);
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.dataset.i18nPlaceholder;
+            el.placeholder = this.t(key);
+        });
+        document.documentElement.lang = this.language;
+    },
+
+    copySymbol(char) {
+        navigator.clipboard.writeText(char);
+        alert(this.t('copied_alert') + char);
+    },
 
     init() {
         // Cache DOM
@@ -249,9 +498,20 @@ const App = {
         // Load stored
         this.loadSettings();
 
+        // Language toggle
+        this.el.btnLang = document.getElementById('btn-lang');
+        if (this.el.btnLang) {
+            this.el.btnLang.addEventListener('click', () => {
+                this.language = this.language === 'ja' ? 'en' : 'ja';
+                this.updateUI();
+                this.saveSettings();
+            });
+        }
+        this.updateUI();
+
         // Listeners: Base Time
         this.el.btnSetToday.addEventListener('click', () => {
-            if (confirm('Reset base time to NOW?')) {
+            if (confirm(this.t('confirm_reset_now'))) {
                 this.setBaseToNow();
                 this.sound.init();
             }
@@ -278,7 +538,7 @@ const App = {
 
         // Listeners: Alarm
         this.el.alarmToggle.addEventListener('click', () => {
-            if (confirm('Is this okay?')) {
+            if (confirm(this.t('confirm_ok'))) {
                 this.requestNotificationPermission();
                 this.sound.init();
                 this.setAlarm();
@@ -287,7 +547,7 @@ const App = {
 
         // Listeners: Timer
         this.el.timerStart.addEventListener('click', () => {
-            if (confirm('Is this okay?')) {
+            if (confirm(this.t('confirm_ok'))) {
                 this.requestNotificationPermission(); // Request on interaction
                 this.toggleTimer();
             }
@@ -454,6 +714,7 @@ const App = {
             this.el.btnImportSettings.addEventListener('click', () => this.importSettings());
         }
 
+        // Listeners: Unit-wise Inputs
         // Listeners: Unit-wise Inputs
         document.querySelectorAll('.unit-input-area').forEach(area => {
             const targetId = area.dataset.target;
@@ -639,7 +900,7 @@ const App = {
             this.el.alarmToggle.classList.add('active');
             setTimeout(() => this.el.alarmToggle.classList.remove('active'), 500);
         } else {
-            alert('Invalid format. Use 500L, 10o, 1Yr, 5m, 1h, 1d etc.');
+            alert(this.t('alert_invalid_format'));
         }
     },
 
@@ -694,7 +955,7 @@ const App = {
         if (sec !== null) {
             this.addNewTimer(sec, input);
         } else {
-            alert('Invalid format. Use 3o, 500L, etc.');
+            alert(this.t('alert_invalid_format'));
         }
     },
 
@@ -840,13 +1101,30 @@ const App = {
         this.saveSettings();
     },
 
+    syncSliders(rgbSet) {
+        if (!rgbSet) return;
+        const setVal = (prefix, colorObj) => {
+            if (!colorObj) return;
+            ['r', 'g', 'b'].forEach(c => {
+                const el = document.getElementById(`theme-${prefix}-${c}`);
+                if (el) el.value = colorObj[c];
+            });
+        };
+        setVal('btn', rgbSet.btn);
+        setVal('bg', rgbSet.bg);
+        setVal('main', rgbSet.main);
+        setVal('text', rgbSet.text);
+        setVal('dim', rgbSet.dim);
+        setVal('btntxt', rgbSet.btntxt);
+    },
+
     // --- Color Presets ---
     saveColorPreset() {
         if (!this.customRGB) {
-            alert('Configure a custom theme first!');
+            alert(this.t('alert_config_custom'));
             return;
         }
-        const name = prompt('Enter preset name:', `Preset ${this.savedColorPresets.length + 1}`);
+        const name = prompt(this.t('prompt_preset_name'), `Preset ${this.savedColorPresets.length + 1}`);
         if (name === null) return;
 
         this.savedColorPresets.push({
@@ -875,7 +1153,7 @@ const App = {
 
             item.innerHTML = `
                 <div class="color-preset-swatch" style="background:${color}"></div>
-                <span class="val">${preset.name}</span>
+                <span class="val">${this.t('preset_' + preset.name.toLowerCase().replace(/\s+/g, '_'))}</span>
                 ${preset.isDefault ? '' : `<button class="btn-delete-preset" data-index="${index}" title="Delete">×</button>`}
             `;
             item.addEventListener('click', (e) => {
@@ -884,9 +1162,7 @@ const App = {
                     const savedIndex = this.savedColorPresets.findIndex(p => p.name === preset.name);
                     if (savedIndex !== -1) this.deleteColorPreset(savedIndex);
                 } else {
-                    if (confirm(`Apply theme "${preset.name}"?`)) {
-                        this.applyCustomTheme(preset.rgb.btn, preset.rgb.bg, preset.rgb.main, preset.rgb.text, preset.rgb.dim, preset.rgb.btntxt);
-                    }
+                    this.applyCustomTheme(preset.rgb.btn, preset.rgb.bg, preset.rgb.main, preset.rgb.text, preset.rgb.dim, preset.rgb.btntxt);
                 }
             });
             this.el.colorPresetsList.appendChild(item);
@@ -894,7 +1170,7 @@ const App = {
     },
 
     deleteColorPreset(index) {
-        if (confirm('Delete this color preset?')) {
+        if (confirm(this.t('confirm_delete_color'))) {
             this.savedColorPresets.splice(index, 1);
             this.saveSettings();
             this.renderColorPresets();
@@ -905,11 +1181,11 @@ const App = {
     saveTimerPreset() {
         const input = this.el.timerInput.value.trim();
         if (!input) {
-            alert('Enter a timer value first (e.g. 500L)!');
+            alert(this.t('alert_enter_timer'));
             return;
         }
 
-        const name = prompt('Enter timer label (e.g. "Work", "Rest"):', input);
+        const name = prompt(this.t('timer_presets_prompt'), input);
         if (name === null) return;
 
         this.savedTimerPresets.push({
@@ -943,7 +1219,7 @@ const App = {
     },
 
     deleteTimerPreset(index) {
-        if (confirm('Delete this timer preset?')) {
+        if (confirm(this.t('confirm_delete_timer'))) {
             this.savedTimerPresets.splice(index, 1);
             this.saveSettings();
             this.renderTimerPresets();
@@ -960,7 +1236,7 @@ const App = {
         const sc = this.el.baseSc.value;
 
         const dateStr = `${yr}/${mo}/${dy} ${hr}:${mn}:${sc}`;
-        const name = prompt('Enter preset label for this Base Point:', dateStr);
+        const name = prompt(this.t('prompt_base_label'), dateStr);
         if (name === null) return;
 
         this.savedBasePresets.push({
@@ -999,7 +1275,7 @@ const App = {
         const preset = this.savedBasePresets[index];
         if (preset && preset.name === "Since Creation") return; // Safety
 
-        if (confirm('Delete this base preset?')) {
+        if (confirm(this.t('confirm_delete'))) {
             this.savedBasePresets.splice(index, 1);
             this.saveSettings();
             this.renderBasePresets();
@@ -1040,6 +1316,25 @@ const App = {
         // Save State
         this.customRGB = { btn, bg, main, text, dim, btntxt };
         this.setTheme('custom');
+
+        // Sync Sliders
+        this.syncSliders(this.customRGB);
+    },
+
+    async loadNotice() {
+        try {
+            const response = await fetch('notice.txt');
+            if (response.ok) {
+                const text = await response.text();
+                const ticker = document.querySelector('.ticker-content');
+                if (ticker && text.trim()) {
+                    ticker.removeAttribute('data-i18n'); // Prevent translation overwrites
+                    ticker.textContent = text.trim();
+                }
+            }
+        } catch (err) {
+            console.log('External notice not found or error loading:', err);
+        }
     },
 
     loadSettings() {
@@ -1059,6 +1354,7 @@ const App = {
         else this.setBaseToNow();
 
         this.mode = storedMode || 'normal';
+        this.language = localStorage.getItem('richb_lang') || 'ja';
         this.currentTheme = storedTheme || 'default';
 
         if (storedColorPresets) {
@@ -1156,6 +1452,7 @@ const App = {
 
         localStorage.setItem('richb_lastAlarmInput', this.el.alarmInput.value);
         localStorage.setItem('richb_lastTimerInput', this.el.timerInput.value);
+        localStorage.setItem('richb_lang', this.language);
     },
 
     exportSettings() {
@@ -1171,20 +1468,20 @@ const App = {
         this.el.backupData.select();
         try {
             document.execCommand('copy');
-            alert('Settings exported and copied to clipboard! 📄✅');
+            alert(this.t('alert_exported'));
         } catch (e) {
-            alert('Settings exported! Please copy the text in the box. 📄');
+            alert(this.t('alert_exported_no_copy'));
         }
     },
 
     importSettings() {
         const json = this.el.backupData.value.trim();
         if (!json) {
-            alert('Please paste the backup data first! 📥');
+            alert(this.t('alert_import_empty'));
             return;
         }
 
-        if (!confirm('This will OVERWRITE all current settings and reload the app. Continue? ⚠️')) {
+        if (!confirm(this.t('confirm_restore'))) {
             return;
         }
 
@@ -1211,7 +1508,7 @@ const App = {
                 }
             }
 
-            alert('Settings restored successfully! Reloading... 🚀');
+            alert(this.t('restore_success'));
             // Force reload and bypass any 'onunload' saves if any
             window.location.href = window.location.href;
         } catch (e) {
@@ -1240,7 +1537,7 @@ const App = {
         const ss = d.getSeconds().toString().padStart(2, '0');
         const msec = Math.floor(d.getMilliseconds() / 100); // Tenths
 
-        this.el.clockReal.textContent = `${yyyy} Yr ${mm} month ${dd} day ${hh}:${min}:${ss}.${msec}`;
+        this.el.clockReal.textContent = `${yyyy} ${this.t('unit_yr')} ${mm} ${this.t('unit_mo')} ${dd} ${this.t('unit_dy')} ${hh}:${min}:${ss}.${msec}`;
 
         // --- ELAPSED REAL TIME ---
         // YYYY Year MM month DD day HH:mm:ss.s
@@ -1261,7 +1558,7 @@ const App = {
 
         const pad = (v) => v.toString().padStart(2, '0');
 
-        this.el.clockElapsedReal.textContent = `Elapsed: ${years} Year ${pad(months)} month ${pad(days)} day ${pad(hours)}:${pad(mins)}:${pad(secs)}.${tenths}`;
+        this.el.clockElapsedReal.textContent = `${this.t('elapsed_label')} ${years} ${this.t('unit_yr')} ${pad(months)} ${this.t('unit_mo')} ${pad(days)} ${this.t('unit_dy')} ${pad(hours)}:${pad(mins)}:${pad(secs)}.${tenths}`;
 
         // 2. Process Alarms
         this.activeAlarms.forEach(alarm => {
@@ -1380,7 +1677,7 @@ const App = {
             if (navigator.serviceWorker && navigator.serviceWorker.ready) {
                 navigator.serviceWorker.ready.then(registration => {
                     registration.showNotification('Richb Timer', {
-                        body: 'Time is up!',
+                        body: this.t('time_is_up'),
                         icon: 'icon.png',
                         vibrate: [200, 100, 200]
                     });
