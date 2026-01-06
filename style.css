@@ -205,9 +205,9 @@ body::before {
 }
 
 .app-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 4px;
     object-fit: cover;
 }
 
