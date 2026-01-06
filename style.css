@@ -16,6 +16,9 @@
     --accent-red: #ff7675;
     /* Soft red */
 
+    --accent-cyan: #00f2ea;
+    /* Default Cyan for Ticker */
+
     --glass-border: rgba(0, 242, 234, 0.1);
     --surface-light: rgba(255, 255, 255, 0.03);
 
@@ -192,6 +195,8 @@ body::before {
 .mode-switches {
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Icons */

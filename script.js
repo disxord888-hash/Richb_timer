@@ -118,6 +118,7 @@ const TRANSLATIONS = {
         confirm_delete_timer: "このタイマーセットを削除しますか？",
         unit_h_real: "時間",
         unit_d_real: "日",
+        btn_notice: "お知らせ",
         tab_notice: "お知らせ",
         help_update_desc: "更新は１日に３～４回もしているので、１日に１回は、サイトのデータを消してください。",
         help_desc: "100BPMの鼓動(1.2秒/拍、補正値1.245秒)に基づいたリズム感のある暦体系です。",
@@ -228,6 +229,7 @@ const TRANSLATIONS = {
         confirm_delete_timer: "Delete this timer preset?",
         unit_h_real: "hr",
         unit_d_real: "days",
+        btn_notice: "Notice",
         tab_notice: "Notice",
         help_update_desc: "The site is updated 3-4 times a day. Please clear your site data once a day to ensure you have the latest version.",
         help_desc: "A rhythmic calendar system based on the 100BPM heartbeat (1.2 sec/beat, corrected to 1.245s).",
@@ -495,6 +497,13 @@ const App = {
         this.el.btnExportSettings = document.getElementById('btn-export-settings');
         this.el.btnImportSettings = document.getElementById('btn-import-settings');
 
+        // Notice Elements
+        this.el.btnNotice = document.getElementById('btn-notice');
+        this.el.modalNotice = document.getElementById('notice-modal');
+        this.el.btnCloseNotice = document.getElementById('btn-close-notice');
+        this.el.tickerContent = document.querySelector('.ticker-content');
+        this.el.noticeFullContent = document.getElementById('notice-full-content');
+
         // Load stored
         this.loadSettings();
 
@@ -713,6 +722,22 @@ const App = {
             this.el.btnExportSettings.addEventListener('click', () => this.exportSettings());
             this.el.btnImportSettings.addEventListener('click', () => this.importSettings());
         }
+
+        // Listeners: Notice
+        if (this.el.btnNotice) {
+            this.el.btnNotice.addEventListener('click', () => {
+                this.el.modalNotice.classList.remove('hidden');
+            });
+            this.el.btnCloseNotice.addEventListener('click', () => {
+                this.el.modalNotice.classList.add('hidden');
+            });
+            this.el.modalNotice.addEventListener('click', (e) => {
+                if (e.target === this.el.modalNotice) this.el.modalNotice.classList.add('hidden');
+            });
+        }
+
+        // Load Notice
+        this.loadNotice();
 
         // Listeners: Unit-wise Inputs
         // Listeners: Unit-wise Inputs
@@ -1312,6 +1337,7 @@ const App = {
         docStyle.setProperty('--custom-dim-color', toCol(dim));
         docStyle.setProperty('--custom-btntxt-color', toCol(btntxt));
         docStyle.setProperty('--custom-panel-bg', toAlpha(bg, 0.5)); // Derived from BG
+        document.documentElement.style.setProperty('--accent-cyan', toCol(main)); // Ensure ticker follows theme
 
         // Save State
         this.customRGB = { btn, bg, main, text, dim, btntxt };
@@ -1321,21 +1347,6 @@ const App = {
         this.syncSliders(this.customRGB);
     },
 
-    async loadNotice() {
-        try {
-            const response = await fetch('notice.txt');
-            if (response.ok) {
-                const text = await response.text();
-                const ticker = document.querySelector('.ticker-content');
-                if (ticker && text.trim()) {
-                    ticker.removeAttribute('data-i18n'); // Prevent translation overwrites
-                    ticker.textContent = text.trim();
-                }
-            }
-        } catch (err) {
-            console.log('External notice not found or error loading:', err);
-        }
-    },
 
     loadSettings() {
         // 1. Raw Loading from LocalStorage
@@ -1688,6 +1699,31 @@ const App = {
                     icon: 'icon.png'
                 });
             }
+        }
+    },
+
+    async loadNotice() {
+        try {
+            const response = await fetch('notice.txt?t=' + Date.now(), { cache: 'no-store' });
+            if (!response.ok) throw new Error('Notice fetch failed');
+            const text = await response.text();
+            const allLines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+
+            // Ticker: First 2 lines
+            const tickerLines = allLines.slice(0, 2);
+            if (tickerLines.length > 0) {
+                this.el.tickerContent.textContent = tickerLines.join(' | ');
+            } else {
+                this.el.tickerContent.textContent = this.t('help_update_desc');
+            }
+
+            // Modal: Full content
+            this.el.noticeFullContent.textContent = text;
+
+        } catch (e) {
+            console.error('Failed to load notice.txt:', e);
+            this.el.tickerContent.textContent = this.t('help_update_desc');
+            this.el.noticeFullContent.textContent = this.t('help_update_desc');
         }
     }
 

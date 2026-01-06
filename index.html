@@ -39,7 +39,7 @@
         </div>
 
         <div class="notice-ticker">
-            <div class="ticker-content" data-i18n="help_update_desc">
+            <div class="ticker-content">
                 更新は１日に３～４回もしているので、１日に１回は、サイトのデータを消してください。
             </div>
         </div>
@@ -57,6 +57,7 @@
                 <button id="btn-theme" class="btn-icon" title="Theme" data-i18n-title="theme">🎨</button>
                 <button id="btn-lang" class="btn-icon" title="Switch Language" data-i18n-title="lang_toggle">🌐</button>
                 <button id="btn-backup" class="btn-icon" title="Backup/Restore" data-i18n-title="backup">💾</button>
+                <button id="btn-notice" class="btn-icon" title="Announcements" data-i18n-title="btn_notice">📢</button>
                 <button id="btn-help" class="btn-icon" title="Help" data-i18n-title="help">❓</button>
             </div>
         </header>
@@ -446,6 +447,17 @@
                     EXPORT</button>
                 <button id="btn-import-settings" class="btn-primary"
                     style="background: #ff4d4d; color: white; padding: 12px;" data-i18n="import_btn">📥 RESTORE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notice Modal -->
+    <div id="notice-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="btn-close-notice" class="btn-close">×</button>
+            <h3 data-i18n="tab_notice">Announcements</h3>
+            <div id="notice-full-content" class="desc" style="white-space: pre-wrap; margin-top: 1rem;">
+                <!-- Full notice content will be injected here -->
             </div>
         </div>
     </div>
