@@ -48,7 +48,7 @@
                 <div class="branding-right">
                     <button id="btn-lang" class="btn-icon" title="Switch Language"
                         data-i18n-title="lang_toggle">🌐</button>
-                    <!-- Support button moved to footer -->
+                    <button id="btn-support" class="btn-icon" title="Support" data-i18n-title="btn_support">🤝</button>
                     <button id="btn-help" class="btn-icon" title="Help" data-i18n-title="help">❓</button>
                 </div>
             </div>
@@ -239,17 +239,9 @@
         </section>
 
         <footer class="app-footer">
-            <span id="app-version">Version: ...</span>
-            <div style="margin-top: 10px; display: flex; gap: 15px; justify-content: center;">
-                <button id="btn-version" class="btn-text-only" title="Changelog" data-i18n="btn_changelog"
-                    style="font-family: 'Tektur', var(--font-mono); font-size: 1rem; color: var(--accent-purple); background: none; border: none; cursor: pointer; text-decoration: underline;">
-                    📜 更新履歴
-                </button>
-                <button id="btn-support" class="btn-text-only" title="Support" data-i18n="btn_support"
-                    style="font-family: 'Tektur', var(--font-mono); font-size: 1rem; color: var(--accent-purple); background: none; border: none; cursor: pointer; text-decoration: underline;">
-                    Support
-                </button>
-            </div>
+            <span id="app-version"
+                style="font-family: 'Tektur', var(--font-mono); color: var(--text-dim); font-size: 0.9rem;">Version:
+                Loading...</span>
         </footer>
     </div>
 
@@ -376,7 +368,10 @@
             <div
                 style="margin-top: 1rem; border-bottom: 1px dotted var(--glass-border); padding-bottom: 1rem; margin-bottom: 1rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-                    <span style="font-size:0.8rem; color:var(--text-dim);" data-i18n="presets_label">Presets:</span>
+                    <span style="font-size:0.8rem; color:var(--text-dim);">
+                        <span data-i18n="presets_label">Presets:</span>
+                        <span style="margin-left: 8px; font-size: 0.7rem; opacity: 0.7;">[ℙ+] = Preset+</span>
+                    </span>
                     <button id="btn-save-color-preset" class="btn-primary" title="Save Current"
                         data-i18n-title="save_current" style="padding:6px 12px; font-size:0.8rem; width:auto;"
                         data-i18n="save_btn">💾 SAVE</button>
@@ -644,7 +639,7 @@
                     <select id="select-font"
                         style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); color: var(--text-main); border: 1px solid var(--glass-border); border-radius: 8px; font-family: inherit;">
                         <option value="inherit">Default (Outfit/Inter)</option>
-                        <option value="'Tektur', system-ui, sans-serif">Tektur</option>
+                        <option value="'Tektur', system-ui, sans-serif" selected>Tektur</option>
                         <option value="'Roboto', sans-serif">Roboto</option>
                         <option value="'Noto Sans JP', sans-serif">Noto Sans JP</option>
                         <option value="'M PLUS Rounded 1c', sans-serif">M PLUS Rounded 1c</option>

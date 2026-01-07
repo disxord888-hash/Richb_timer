@@ -15,6 +15,8 @@ const UNITS = {
     Y: { val: 285 * 75000 * 1.245, label: 'Y' } // 285 U
 };
 
+const APP_VERSION = 'v0.11.02α';
+
 const DEFAULT_COLOR_PRESETS = [
     { name: 'Navy', rgb: { btn: { r: 0, g: 0, b: 5 }, bg: { r: 0, g: 0, b: 1 }, main: { r: 0, g: 0, b: 3 }, text: { r: 0, g: 0, b: 8 }, dim: { r: 0, g: 0, b: 4 }, btntxt: { r: 8, g: 8, b: 8 } } },
     { name: 'Dark red', rgb: { btn: { r: 5, g: 0, b: 0 }, bg: { r: 1, g: 0, b: 0 }, main: { r: 3, g: 0, b: 0 }, text: { r: 8, g: 0, b: 0 }, dim: { r: 4, g: 0, b: 0 }, btntxt: { r: 8, g: 8, b: 8 } } },
@@ -36,7 +38,37 @@ const DEFAULT_COLOR_PRESETS = [
     { name: 'Berry', rgb: { btn: { r: 6, g: 1, b: 3 }, bg: { r: 1, g: 0, b: 1 }, main: { r: 8, g: 2, b: 4 }, text: { r: 8, g: 8, b: 8 }, dim: { r: 5, g: 2, b: 3 }, btntxt: { r: 8, g: 8, b: 8 } } },
     { name: 'Sand', rgb: { btn: { r: 6, g: 5, b: 3 }, bg: { r: 8, g: 8, b: 7 }, main: { r: 7, g: 6, b: 4 }, text: { r: 1, g: 1, b: 0 }, dim: { r: 3, g: 3, b: 2 }, btntxt: { r: 1, g: 1, b: 1 } } },
     { name: 'Coal', rgb: { btn: { r: 1, g: 1, b: 1 }, bg: { r: 0, g: 0, b: 0 }, main: { r: 2, g: 2, b: 2 }, text: { r: 8, g: 8, b: 8 }, dim: { r: 4, g: 4, b: 4 }, btntxt: { r: 8, g: 8, b: 8 } } },
-    { name: 'Rose', rgb: { btn: { r: 8, g: 3, b: 4 }, bg: { r: 3, g: 1, b: 1 }, main: { r: 8, g: 5, b: 6 }, text: { r: 8, g: 8, b: 8 }, dim: { r: 5, g: 2, b: 2 }, btntxt: { r: 8, g: 8, b: 8 } } }
+    { name: 'Rose', rgb: { btn: { r: 8, g: 3, b: 4 }, bg: { r: 3, g: 1, b: 1 }, main: { r: 8, g: 5, b: 6 }, text: { r: 8, g: 8, b: 8 }, dim: { r: 5, g: 2, b: 2 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Cyberpunk', rgb: { btn: { r: 8, g: 0, b: 5 }, bg: { r: 0, g: 0, b: 1 }, main: { r: 0, g: 8, b: 8 }, text: { r: 8, g: 0, b: 8 }, dim: { r: 4, g: 0, b: 4 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Vaporwave', rgb: { btn: { r: 8, g: 4, b: 6 }, bg: { r: 1, g: 0, b: 3 }, main: { r: 0, g: 8, b: 8 }, text: { r: 8, g: 6, b: 8 }, dim: { r: 4, g: 3, b: 5 }, btntxt: { r: 0, g: 0, b: 2 } } },
+    { name: 'Matrix', rgb: { btn: { r: 0, g: 5, b: 0 }, bg: { r: 0, g: 1, b: 0 }, main: { r: 0, g: 8, b: 0 }, text: { r: 4, g: 8, b: 4 }, dim: { r: 0, g: 4, b: 0 }, btntxt: { r: 0, g: 0, b: 0 } } },
+    { name: 'Dracula', rgb: { btn: { r: 4, g: 3, b: 5 }, bg: { r: 1, g: 1, b: 2 }, main: { r: 8, g: 3, b: 6 }, text: { r: 7, g: 7, b: 8 }, dim: { r: 4, g: 4, b: 5 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Nord', rgb: { btn: { r: 3, g: 4, b: 5 }, bg: { r: 1, g: 2, b: 3 }, main: { r: 5, g: 7, b: 8 }, text: { r: 6, g: 7, b: 8 }, dim: { r: 3, g: 4, b: 5 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Solarized Light', rgb: { btn: { r: 7, g: 6, b: 4 }, bg: { r: 8, g: 8, b: 7 }, main: { r: 1, g: 4, b: 5 }, text: { r: 2, g: 3, b: 3 }, dim: { r: 5, g: 5, b: 4 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Solarized Dark', rgb: { btn: { r: 0, g: 1, b: 2 }, bg: { r: 0, g: 1, b: 1 }, main: { r: 1, g: 5, b: 6 }, text: { r: 5, g: 6, b: 5 }, dim: { r: 2, g: 3, b: 3 }, btntxt: { r: 5, g: 6, b: 5 } } },
+    { name: 'Monokai', rgb: { btn: { r: 6, g: 0, b: 3 }, bg: { r: 1, g: 1, b: 1 }, main: { r: 4, g: 7, b: 0 }, text: { r: 8, g: 8, b: 8 }, dim: { r: 4, g: 4, b: 4 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Gruvbox', rgb: { btn: { r: 6, g: 2, b: 0 }, bg: { r: 1, g: 1, b: 0 }, main: { r: 5, g: 6, b: 2 }, text: { r: 7, g: 6, b: 4 }, dim: { r: 5, g: 4, b: 3 }, btntxt: { r: 1, g: 0, b: 0 } } },
+    { name: 'Autumn', rgb: { btn: { r: 6, g: 2, b: 0 }, bg: { r: 2, g: 1, b: 0 }, main: { r: 8, g: 4, b: 0 }, text: { r: 8, g: 7, b: 4 }, dim: { r: 5, g: 3, b: 1 }, btntxt: { r: 2, g: 0, b: 0 } } },
+    { name: 'Winter', rgb: { btn: { r: 5, g: 6, b: 7 }, bg: { r: 7, g: 8, b: 8 }, main: { r: 2, g: 5, b: 8 }, text: { r: 1, g: 2, b: 4 }, dim: { r: 5, g: 6, b: 7 }, btntxt: { r: 0, g: 1, b: 3 } } },
+    { name: 'Spring', rgb: { btn: { r: 8, g: 4, b: 5 }, bg: { r: 7, g: 8, b: 7 }, main: { r: 4, g: 7, b: 2 }, text: { r: 2, g: 4, b: 1 }, dim: { r: 5, g: 6, b: 4 }, btntxt: { r: 1, g: 3, b: 0 } } },
+    { name: 'Summer', rgb: { btn: { r: 0, g: 4, b: 7 }, bg: { r: 8, g: 8, b: 6 }, main: { r: 8, g: 5, b: 0 }, text: { r: 0, g: 2, b: 5 }, dim: { r: 5, g: 5, b: 2 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Coffee', rgb: { btn: { r: 3, g: 2, b: 1 }, bg: { r: 1, g: 1, b: 0 }, main: { r: 5, g: 4, b: 2 }, text: { r: 7, g: 6, b: 4 }, dim: { r: 4, g: 3, b: 2 }, btntxt: { r: 8, g: 8, b: 7 } } },
+    { name: 'Matcha', rgb: { btn: { r: 3, g: 5, b: 2 }, bg: { r: 7, g: 8, b: 6 }, main: { r: 2, g: 4, b: 1 }, text: { r: 1, g: 3, b: 1 }, dim: { r: 5, g: 6, b: 4 }, btntxt: { r: 0, g: 2, b: 0 } } },
+    { name: 'Wine', rgb: { btn: { r: 4, g: 0, b: 1 }, bg: { r: 1, g: 0, b: 0 }, main: { r: 6, g: 1, b: 2 }, text: { r: 8, g: 6, b: 6 }, dim: { r: 4, g: 2, b: 2 }, btntxt: { r: 8, g: 7, b: 7 } } },
+    { name: 'Lemonade', rgb: { btn: { r: 7, g: 7, b: 0 }, bg: { r: 8, g: 8, b: 6 }, main: { r: 6, g: 8, b: 2 }, text: { r: 3, g: 3, b: 0 }, dim: { r: 6, g: 6, b: 3 }, btntxt: { r: 2, g: 2, b: 0 } } },
+    { name: 'Twilight', rgb: { btn: { r: 2, g: 1, b: 4 }, bg: { r: 0, g: 0, b: 1 }, main: { r: 6, g: 3, b: 5 }, text: { r: 7, g: 5, b: 6 }, dim: { r: 3, g: 2, b: 4 }, btntxt: { r: 8, g: 7, b: 8 } } },
+    { name: 'Deep Sea', rgb: { btn: { r: 0, g: 2, b: 4 }, bg: { r: 0, g: 0, b: 1 }, main: { r: 0, g: 5, b: 6 }, text: { r: 4, g: 7, b: 8 }, dim: { r: 1, g: 3, b: 5 }, btntxt: { r: 6, g: 8, b: 8 } } },
+    { name: 'Volcano', rgb: { btn: { r: 7, g: 1, b: 0 }, bg: { r: 1, g: 1, b: 1 }, main: { r: 8, g: 3, b: 0 }, text: { r: 8, g: 6, b: 2 }, dim: { r: 4, g: 2, b: 1 }, btntxt: { r: 8, g: 8, b: 0 } } },
+    { name: 'Space Gray', rgb: { btn: { r: 3, g: 3, b: 3 }, bg: { r: 1, g: 1, b: 1 }, main: { r: 5, g: 5, b: 5 }, text: { r: 7, g: 7, b: 7 }, dim: { r: 3, g: 3, b: 3 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Hacker', rgb: { btn: { r: 0, g: 6, b: 0 }, bg: { r: 0, g: 0, b: 0 }, main: { r: 0, g: 8, b: 0 }, text: { r: 0, g: 7, b: 0 }, dim: { r: 0, g: 3, b: 0 }, btntxt: { r: 0, g: 0, b: 0 } } },
+    { name: 'Candy', rgb: { btn: { r: 8, g: 4, b: 6 }, bg: { r: 8, g: 7, b: 8 }, main: { r: 4, g: 6, b: 8 }, text: { r: 6, g: 3, b: 5 }, dim: { r: 7, g: 5, b: 7 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Pumpkin', rgb: { btn: { r: 7, g: 3, b: 0 }, bg: { r: 1, g: 0, b: 0 }, main: { r: 8, g: 5, b: 0 }, text: { r: 8, g: 6, b: 2 }, dim: { r: 4, g: 2, b: 0 }, btntxt: { r: 0, g: 0, b: 0 } } },
+    { name: 'Christmas', rgb: { btn: { r: 6, g: 0, b: 0 }, bg: { r: 0, g: 1, b: 0 }, main: { r: 0, g: 5, b: 0 }, text: { r: 8, g: 7, b: 7 }, dim: { r: 3, g: 4, b: 3 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'Royal', rgb: { btn: { r: 3, g: 0, b: 4 }, bg: { r: 1, g: 0, b: 1 }, main: { r: 7, g: 6, b: 0 }, text: { r: 8, g: 7, b: 2 }, dim: { r: 4, g: 3, b: 5 }, btntxt: { r: 8, g: 8, b: 0 } } },
+    { name: 'Iceberg', rgb: { btn: { r: 3, g: 5, b: 6 }, bg: { r: 7, g: 8, b: 8 }, main: { r: 0, g: 4, b: 6 }, text: { r: 0, g: 2, b: 4 }, dim: { r: 4, g: 6, b: 7 }, btntxt: { r: 0, g: 1, b: 3 } } },
+    { name: 'Desert', rgb: { btn: { r: 6, g: 4, b: 2 }, bg: { r: 7, g: 6, b: 4 }, main: { r: 2, g: 5, b: 8 }, text: { r: 2, g: 1, b: 0 }, dim: { r: 5, g: 4, b: 3 }, btntxt: { r: 1, g: 0, b: 0 } } },
+    { name: 'Night Owl', rgb: { btn: { r: 2, g: 2, b: 4 }, bg: { r: 0, g: 0, b: 2 }, main: { r: 7, g: 7, b: 3 }, text: { r: 6, g: 7, b: 8 }, dim: { r: 2, g: 3, b: 5 }, btntxt: { r: 8, g: 8, b: 8 } } },
+    { name: 'High Contrast', rgb: { btn: { r: 8, g: 8, b: 8 }, bg: { r: 0, g: 0, b: 0 }, main: { r: 8, g: 8, b: 8 }, text: { r: 8, g: 8, b: 8 }, dim: { r: 4, g: 4, b: 4 }, btntxt: { r: 0, g: 0, b: 0 } } }
 ];
 
 const TRANSLATIONS = {
@@ -163,7 +195,37 @@ const TRANSLATIONS = {
         preset_berry: "ベリー",
         preset_sand: "サンド",
         preset_coal: "コール",
-        preset_rose: "ローズ"
+        preset_rose: "ローズ",
+        preset_cyberpunk: "サイバーパンク",
+        preset_vaporwave: "ヴェイパーウェイヴ",
+        preset_matrix: "マトリックス",
+        preset_dracula: "ドラキュラ",
+        preset_nord: "ノード",
+        preset_solarized_light: "ソラライズド・ライト",
+        preset_solarized_dark: "ソラライズド・ダーク",
+        preset_monokai: "モノカイ",
+        preset_gruvbox: "グルーヴボックス",
+        preset_autumn: "オータム",
+        preset_winter: "ウィンター",
+        preset_spring: "スプリング",
+        preset_summer: "サマー",
+        preset_coffee: "コーヒー",
+        preset_matcha: "抹茶",
+        preset_wine: "ワイン",
+        preset_lemonade: "レモネード",
+        preset_twilight: "トワイライト",
+        preset_deep_sea: "深海",
+        preset_volcano: "火山",
+        preset_space_gray: "スペースグレー",
+        preset_hacker: "ハッカー",
+        preset_candy: "キャンディ",
+        preset_pumpkin: "パンプキン",
+        preset_christmas: "クリスマス",
+        preset_royal: "ロイヤル",
+        preset_iceberg: "アイスバーグ",
+        preset_desert: "デザート",
+        preset_night_owl: "ナイトオウル",
+        preset_high_contrast: "ハイコントラスト"
     },
     en: {
         lang_toggle: "Switch Language",
@@ -288,7 +350,37 @@ const TRANSLATIONS = {
         preset_berry: "Berry",
         preset_sand: "Sand",
         preset_coal: "Coal",
-        preset_rose: "Rose"
+        preset_rose: "Rose",
+        preset_cyberpunk: "Cyberpunk",
+        preset_vaporwave: "Vaporwave",
+        preset_matrix: "Matrix",
+        preset_dracula: "Dracula",
+        preset_nord: "Nord",
+        preset_solarized_light: "Solarized Light",
+        preset_solarized_dark: "Solarized Dark",
+        preset_monokai: "Monokai",
+        preset_gruvbox: "Gruvbox",
+        preset_autumn: "Autumn",
+        preset_winter: "Winter",
+        preset_spring: "Spring",
+        preset_summer: "Summer",
+        preset_coffee: "Coffee",
+        preset_matcha: "Matcha",
+        preset_wine: "Wine",
+        preset_lemonade: "Lemonade",
+        preset_twilight: "Twilight",
+        preset_deep_sea: "Deep Sea",
+        preset_volcano: "Volcano",
+        preset_space_gray: "Space Gray",
+        preset_hacker: "Hacker",
+        preset_candy: "Candy",
+        preset_pumpkin: "Pumpkin",
+        preset_christmas: "Christmas",
+        preset_royal: "Royal",
+        preset_iceberg: "Iceberg",
+        preset_desert: "Desert",
+        preset_night_owl: "Night Owl",
+        preset_high_contrast: "High Contrast"
     }
 };
 
@@ -524,6 +616,11 @@ const App = {
         alert(this.t('copied_alert') + char);
     },
 
+    loadVersion() {
+        const el = document.getElementById('app-version');
+        if (el) el.textContent = 'Version: ' + APP_VERSION;
+    },
+
     init() {
         // Cache DOM
         this.el.clockMain = document.getElementById('richb-main');
@@ -613,10 +710,11 @@ const App = {
         this.el.supportFullContent = document.getElementById('support-full-content');
 
         // Version/Changelog Elements
-        this.el.btnVersion = document.getElementById('btn-version');
-        this.el.modalVersion = document.getElementById('version-modal');
-        this.el.btnCloseVersion = document.getElementById('btn-close-version');
-        this.el.versionFullContent = document.getElementById('version-full-content');
+        // Removed specific buttons from footer, now just text.
+        // this.el.btnVersion = document.getElementById('btn-version');
+        // this.el.modalVersion = document.getElementById('version-modal');
+        // this.el.btnCloseVersion = document.getElementById('btn-close-version');
+        // this.el.versionFullContent = document.getElementById('version-full-content');
 
         // Load stored
         this.loadSettings();
@@ -631,6 +729,7 @@ const App = {
             });
         }
         this.updateUI();
+        this.loadVersion();
 
         // Listeners: Base Time
         this.el.btnSetToday.addEventListener('click', () => {
@@ -743,17 +842,17 @@ const App = {
         }
 
         // Listeners: Version/Changelog
-        if (this.el.btnVersion) {
-            this.el.btnVersion.addEventListener('click', () => {
-                this.el.modalVersion.classList.remove('hidden');
-            });
-            this.el.btnCloseVersion.addEventListener('click', () => {
-                this.el.modalVersion.classList.add('hidden');
-            });
-            this.el.modalVersion.addEventListener('click', (e) => {
-                if (e.target === this.el.modalVersion) this.el.modalVersion.classList.add('hidden');
-            });
-        }
+        // if (this.el.btnVersion) {
+        //     this.el.btnVersion.addEventListener('click', () => {
+        //         this.el.modalVersion.classList.remove('hidden');
+        //     });
+        //     this.el.btnCloseVersion.addEventListener('click', () => {
+        //         this.el.modalVersion.classList.add('hidden');
+        //     });
+        //     this.el.modalVersion.addEventListener('click', (e) => {
+        //         if (e.target === this.el.modalVersion) this.el.modalVersion.classList.add('hidden');
+        //     });
+        // }
 
         // Listeners: Help Tabs
         const tabBtns = document.querySelectorAll('.tab-btn');
@@ -1443,13 +1542,26 @@ const App = {
             item.className = 'preset-item';
 
             // Generate swatch for visual reference
+            // Generate swatch for visual reference
             const main = preset.rgb.main;
             const map = (v, raw) => raw ? v : Math.round((v / 8) * 255);
             const color = `rgb(${map(main.r, main.isRaw)}, ${map(main.g, main.isRaw)}, ${map(main.b, main.isRaw)})`;
 
+            // Localization Key Logic
+            const keyName = preset.name.toLowerCase().replace(/\s+/g, '_');
+            let displayName = this.t('preset_' + keyName);
+
+            // Conditional Prefix Logic: Apply [ℙ+] for 'Cyberpunk' and later
+            // We find the index of 'Cyberpunk' in the full list effectively.
+            // Since we know the order, we can check if it's one of the new ones.
+            // A simple way is to check if index >= 22 (where Cyberpunk is added).
+            if (index >= 21) {
+                displayName = `[ℙ+] ${displayName}`;
+            }
+
             item.innerHTML = `
                 <div class="color-preset-swatch" style="background:${color}"></div>
-                <span class="val">${this.t('preset_' + preset.name.toLowerCase().replace(/\s+/g, '_'))}</span>
+                <span class="val">${displayName}</span>
                 ${preset.isDefault ? '' : `<button class="btn-delete-preset" data-index="${index}" title="Delete">×</button>`}
             `;
             item.addEventListener('click', (e) => {
@@ -1751,6 +1863,11 @@ const App = {
         if (storedFont) {
             this.setFont(storedFont);
             if (this.el.selectFont) this.el.selectFont.value = storedFont;
+        } else {
+            // Default to Tektur if no setting
+            const defaultFont = "'Tektur', system-ui, sans-serif";
+            this.setFont(defaultFont);
+            if (this.el.selectFont) this.el.selectFont.value = defaultFont;
         }
     },
 
@@ -2122,12 +2239,12 @@ const App = {
             } else {
                 console.error('Fetch failed with status:', response.status);
                 const verEl = document.getElementById('app-version');
-                if (verEl) verEl.textContent = 'Version: v0.11.1α';
+                if (verEl) verEl.textContent = 'Version: ' + APP_VERSION;
             }
         } catch (e) {
             console.error("Version load failed", e);
             const verEl = document.getElementById('app-version');
-            if (verEl) verEl.textContent = 'Version: v0.11.1α';
+            if (verEl) verEl.textContent = 'Version: ' + APP_VERSION;
         }
     }
 

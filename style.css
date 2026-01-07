@@ -36,7 +36,7 @@
     /* Fonts - moved to :root for JS overrides */
     --font-ui: system-ui, -apple-system, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Consolas, 'Courier New', monospace;
-    --font-app: var(--font-ui);
+    --font-app: 'Tektur', var(--font-ui);
 }
 
 /* Theme: Purple */
