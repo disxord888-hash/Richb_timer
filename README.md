@@ -1,3 +1,11 @@
+1p=1/12L
+1L=1.245sec
+1o=50L
+1Ī=50L
+1U=30Ī
+1é=6U
+1Y=285U
+
 Richb Timer サポート
 
 GitHub リポジトリ:
@@ -12,6 +20,10 @@ https://www.youtube.com/watch?v=-W4yeXw3VL0
 https://discord.gg/V2JmS2D7uS
 
 -更新履歴-
+v0.12
+(2026/01/12)
+いろいろと元に戻しました。
+
 v0.11.03
 (2026/01/08)
 {バグ修正,その他些細な修正}
